@@ -1,11 +1,21 @@
 package ie.tudublin;
 
-public class Tasks {
+import processing.data.TableRow;
+
+public class Task {
     private String task;
     private String start;
     private String end;
 
-    public Tasks(String task, String start, String end) {
+    public Task(TableRow row){
+        this(
+            row.getString("Task"),
+            row.getString("Start"),
+            row.getString("End")
+        );
+    }
+
+    public Task(String task, String start, String end) {
         this.setTask(task);
         this.setStart(start);
         this.setEnd(end);
@@ -33,5 +43,10 @@ public class Tasks {
 
     public void setTask(String task) {
         this.task = task;
+    }
+
+    @Override
+    public String toString() {
+        return "Tasks [end=" + end + ", start=" + start + ", task=" + task + "]";
     }
 }
