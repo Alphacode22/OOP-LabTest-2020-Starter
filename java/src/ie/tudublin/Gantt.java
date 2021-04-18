@@ -77,31 +77,42 @@ public class Gantt extends PApplet
 
 		//Displays the grid
         for(int i = 1; i <= 30; i++){
+
+			//Choose where to display
             float x = map(i, 1, 30, leftMargin, width - margin);
+
+			//Displays the grid
             line(x, margin, x, height - margin );
+
+			//Display the grid number
             text(i, x, margin / 20);
         }
 
 		//Display the tasks
 		for(int i = 0; i < tasks.size(); i++){
-			//Displaying the task name
-			float y = map(i, 0, tasks.size(), margin + 50, height - margin - 50);
+			//Select a task to display
 			Task t = tasks.get(i);
 
-			//Displaying the start and end of the task
+			//Choose where to display
+			float y = map(i, 0, tasks.size(), margin + 50, height - margin - 50);
+			//Start
 			float x1 = map(t.getStart(), 1, 30, leftMargin, width - margin);
+			//End
 			float x2 = map(t.getEnd(), 1, 30, leftMargin, width - margin);
+
+			//Displaying the start and end of the task
+			//Choose colour
 			int c = (int) map(i, 0, tasks.size(), 0, 255);
-			noStroke();
 			fill(c, 255, 255);
+			noStroke();
 			rect(x1, y - 20, x2 - x1, 40);
+			
+			//Displaying the task name
+			//Choose colour
 			fill(255);
 			textAlign(LEFT, CENTER);
 			text(t.getTask(), 20, y);
-
 		}
-
-
     }// 30:16
 	
 
@@ -113,7 +124,6 @@ public class Gantt extends PApplet
 		printTasks();
 	    leftMargin = width * 0.2f;
 		margin = width * 0.05f;
-		
 	}
 	
 	public void draw()
