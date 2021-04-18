@@ -10,7 +10,7 @@ public class Gantt extends PApplet
 {	
 	ArrayList<Task> tasks = new ArrayList<Task>();
 	public float leftMargin;
-	public float rightMargin;
+	public float margin;
 	
 	public void settings()
 	{
@@ -55,12 +55,29 @@ public class Gantt extends PApplet
 
 		//Displays the grid
         for(int i = 1; i <= 30; i++){
-            float x = map(i, 1, 30, leftMargin, width - rightMargin);
-            line(x, rightMargin, x, height - rightMargin );
-            text(i, x, rightMargin / 20);
+            float x = map(i, 1, 30, leftMargin, width - margin);
+            line(x, margin, x, height - margin );
+            text(i, x, margin / 20);
         }
 
 		//Display the tasks
+		for(int i = 0; i < tasks.size(); i++){
+			//Displaying the task name
+			float y = map(i, 0, tasks.size(), margin + 50, height - margin - 50);
+			Task t = tasks.get(i);
+
+			//Displaying the start and end of the task
+			float x1 = map(t.getStart(), 1, 30, leftMargin, width - margin);
+			float x2 = map(t.getEnd(), 1, 30, leftMargin, width - margin);
+			int c = (int) map(i, 0, tasks.size(), 0, 255);
+			noStroke();
+			fill(c, 255, 255);
+			rect(x1, y - 20, x2 - x1, 40);
+			fill(255);
+			textAlign(LEFT, CENTER);
+			text(t.getTask(), 20, y);
+
+		}
 
 
     }// 30:16
@@ -80,8 +97,8 @@ public class Gantt extends PApplet
 		colorMode(HSB);
 		loadTasks();
 		printTasks();
-	    leftMargin = width * 0.7f;
-		rightMargin = width * 0.5f;
+	    leftMargin = width * 0.2f;
+		margin = width * 0.05f;
 		
 	}
 	

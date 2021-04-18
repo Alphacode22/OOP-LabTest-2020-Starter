@@ -4,36 +4,36 @@ import processing.data.TableRow;
 
 public class Task {
     private String task;
-    private String start;
-    private String end;
+    private float start;
+    private float end;
 
     public Task(TableRow row){
         this(
             row.getString("Task"),
-            row.getString("Start"),
-            row.getString("End")
+            row.getFloat("Start"),
+            row.getFloat("End")
         );
     }
 
-    public Task(String task, String start, String end) {
+    public Task(String task, float start, float end) {
         this.setTask(task);
         this.setStart(start);
         this.setEnd(end);
     }
 
-    public String getEnd() {
+    public float getEnd() {
         return end;
     }
 
-    public void setEnd(String end) {
+    public void setEnd(float end) {
         this.end = end;
     }
 
-    public String getStart() {
+    public float getStart() {
         return start;
     }
 
-    public void setStart(String start) {
+    public void setStart(float start) {
         this.start = start;
     }
 
