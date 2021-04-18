@@ -11,10 +11,32 @@ public class Gantt extends PApplet
 	ArrayList<Task> tasks = new ArrayList<Task>();
 	public float leftMargin;
 	public float margin;
+
+	int whichTask = -1;
+	boolean isEnd = false;
 	
 	public void settings()
 	{
 		size(800, 600);
+	}
+
+	public void mousePressed()
+	{
+		println("Mouse pressed");	
+	}
+
+	public void mouseDragged()
+	{
+		//println("Mouse dragged");
+		for(int i =0; i < tasks.size(); i ++){
+
+			//Not sure
+			// float y1 = (margin + margin + 40 * i) - 15;
+			// float y2 = (margin + margin + 40 * i) + 20;
+
+			//float x1 = map(tasks.get(i).getStart(), 1, )
+
+		}
 	}
 
 	
@@ -82,15 +104,7 @@ public class Gantt extends PApplet
 
     }// 30:16
 	
-	public void mousePressed()
-	{
-		println("Mouse pressed");	
-	}
 
-	public void mouseDragged()
-	{
-		println("Mouse dragged");
-	}
 
 	public void setup() 
 	{
